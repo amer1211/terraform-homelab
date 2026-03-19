@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket                      = "terraform-state-bucket-amer"
-    key                         = "terraform.tfstate"
-    region                      = "nbg1"
-   endpoints = {
+    bucket = "terraform-state-bucket-amer"
+    key    = "terraform.tfstate"
+    region = "nbg1"
+    endpoints = {
       s3 = "https://nbg1.your-objectstorage.com"
     }
     skip_credentials_validation = true
@@ -55,10 +55,10 @@ resource "hcloud_firewall" "web" {
 }
 
 resource "hcloud_server" "web" {
-  name         = var.server_name
-  server_type  = var.server_type
-  image        = "ubuntu-22.04"
-  location     = var.location
+  name        = var.server_name
+  server_type = var.server_type
+  image       = "ubuntu-22.04"
+  location    = var.location
 
   ssh_keys     = [data.hcloud_ssh_key.default.id]
   firewall_ids = [hcloud_firewall.web.id]
