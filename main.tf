@@ -26,7 +26,7 @@ provider "hcloud" {
 }
 
 data "hcloud_ssh_key" "default" {
-  name = "terraform-homelab"
+  name = "desktop-key"
 }
 
 resource "hcloud_firewall" "web" {
