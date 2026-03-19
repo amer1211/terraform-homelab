@@ -17,7 +17,7 @@ terraform {
     skip_metadata_api_check     = true
     skip_region_validation      = true
     skip_requesting_account_id  = true
-    force_path_style            = true
+    use_path_style              = true
   }
 }
 
@@ -65,11 +65,17 @@ resource "hcloud_server" "web" {
 
   user_data = <<-EOF
     #!/bin/bash
+    set -e
+
     apt-get update -y
-    apt-get install -y nginx
-    systemctl enable nginx
-    systemctl start nginx
-    echo "<h1>Deployed with Terraform!</h1>" > /var/www/html/index.html
+    apt-get upgrade -y
+
+    curl -fsSL https://get.docker.com | sh
+
+    systemctl enable docker
+    systemctl start docker
+
+    echo "Docker ready" > /var/log/cloud-init-done.log
   EOF
 
   labels = {
