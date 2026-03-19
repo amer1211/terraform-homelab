@@ -5,7 +5,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+RUN apt-get update && apt-get install -y --no-install-recommends gcc && \
+    pip install --no-cache-dir --prefix=/install -r requirements.txt && \
+    apt-get purge -y gcc && apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 
 
 # ── Stage 2: Finales schlankes Image ──────────────────────
