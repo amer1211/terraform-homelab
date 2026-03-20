@@ -1,0 +1,33 @@
+groups:
+  - name: homelab-alerts
+    rules:
+
+      # App nicht erreichbar seit 1 Minute
+      - alert: AppDown
+        expr: up{job="homelab-api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Homelab API ist nicht erreichbar"
+          description: "Der /metrics Endpoint antwortet seit 1 Min nicht."
+
+      # CPU über 80% für 5 Minuten
+      - alert: HighCPU
+        expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Hohe CPU-Last auf dem Server"
+          description: "CPU ist seit 5 Min über 80%."
+
+      # RAM über 85% genutzt
+      - alert: HighMemory
+        expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Hoher RAM-Verbrauch"
+          description: "Mehr als 85% RAM genutzt."

@@ -1,0 +1,25 @@
+global:
+  scrape_interval: 15s         # alle 15 Sek. Metriken holen
+  evaluation_interval: 15s     # alle 15 Sek. Alerts prüfen
+
+rule_files:
+  - "alerts.yml"               # Alert-Regeln laden
+
+scrape_configs:
+
+  # Prometheus überwacht sich selbst
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Deine FastAPI App
+  - job_name: 'homelab-api'
+    static_configs:
+      - targets: ['host.docker.internal:80']  # App läuft auf Port 80
+    metrics_path: '/metrics'
+    scrape_interval: 10s       # App häufiger abfragen
+
+  # Node Exporter (Server-Metriken)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']      # Container-Name als Host!
