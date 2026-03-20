@@ -19,10 +19,8 @@ def test_health():
 def test_metrics():
     r = client.get("/metrics")
     assert r.status_code == 200
-    data = r.json()
-    assert "cpu_percent" in data
-    assert "memory" in data
-    assert "disk_percent" in data
+    assert "http_requests_total" in r.text
+    assert "app_cpu_percent" in r.text
 
 
 def test_info():
