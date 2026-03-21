@@ -30,8 +30,8 @@
 
 ```
 git push → pytest → Docker Build (120MB) → GHCR → SSH Deploy → Health Check
-            ↑                                                          ↓
-         Branch Protection                               Prometheus scraped /metrics
+                                                                       ↓
+                                                        Prometheus scraped /metrics
 ```
 
 ---
@@ -39,7 +39,7 @@ git push → pytest → Docker Build (120MB) → GHCR → SSH Deploy → Health 
 ## Projekt 1 — Terraform Infrastruktur
 
 **Was deployed wird:**
-- Hetzner CX22 Server (ARM, 2 vCPU, 4 GB RAM)
+- Hetzner CAX11 Server (ARM, 2 vCPU, 4 GB RAM)
 - Firewall mit SSH / HTTP / HTTPS Regeln
 - SSH-Key Verwaltung als Code
 - Remote State in Hetzner Object Storage
@@ -78,9 +78,6 @@ git push → pytest → Docker Build (120MB) → GHCR → SSH Deploy → Health 
 - Prometheus scraped Metriken alle 15 Sekunden
 - Node Exporter liefert Server-Metriken (CPU, RAM, Disk)
 - Grafana Dashboard ID 1860 — Live-Visualisierung
-- Alert-Regeln: App Down, CPU > 80%, RAM > 85%
-
-![Grafana Dashboard](docs/Grafana.png)
 
 ---
 
@@ -88,7 +85,7 @@ git push → pytest → Docker Build (120MB) → GHCR → SSH Deploy → Health 
 
 ```bash
 # Repo klonen
-git clone https://github.com/DEIN-USER/terraform-homelab
+git clone https://github.com/amer1211/terraform-homelab
 
 # App lokal starten
 cd app
