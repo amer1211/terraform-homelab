@@ -1,5 +1,8 @@
 # Cloud Homelab — DevOps Portfolio
 
+![Terraform CI](https://github.com/amer1211/terraform-homelab/actions/workflows/terraform.yml/badge.svg)
+![App CI/CD](https://github.com/amer1211/terraform-homelab/actions/workflows/app.yml/badge.svg)
+
 > Vollständiger Cloud-Stack auf Hetzner: Infrastructure as Code,
 > automatisiertes Deployment und Production Monitoring.
 
