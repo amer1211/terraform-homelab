@@ -100,12 +100,4 @@ cd monitoring
 docker compose up -d
 ```
 
----
 
-## Gelernte Konzepte (für das Interview)
-
-- **IaC**: Infrastruktur versioniert, reproduzierbar, reviewbar
-- **GitOps-Mindset**: Git ist die einzige Source of Truth
-- **Shift Left Security**: Kein Root-Container, Secrets nur als GitHub Secrets
-- **Observability**: Metrics → Prometheus → Grafana (RED-Method)
-- **Zero-Downtime**: Health-Check nach jedem Deploy
