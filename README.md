@@ -3,7 +3,7 @@
 > Vollständiger Cloud-Stack auf Hetzner: Infrastructure as Code,
 > automatisiertes Deployment und Production Monitoring.
 
-## Architektur
+## Grafana Dashboard
 
 ![Grafana Dashboard](docs/Grafana.png)
 
@@ -13,6 +13,7 @@
 ## API Dokumentation
 ![Swagger UI](docs/swagger.png)
 
+## Architektur
 
 | Schicht        | Technologie                        |
 |----------------|------------------------------------|
