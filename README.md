@@ -5,7 +5,14 @@
 
 ## Architektur
 
-[Hier Screenshot oder Diagramm einfügen]
+![Grafana Dashboard](docs/Grafana.png)
+
+## CI/CD Pipeline
+![GitHub Actions](docs/pipeline.png)
+
+## API Dokumentation
+![Swagger UI](docs/swagger.png)
+
 
 | Schicht        | Technologie                        |
 |----------------|------------------------------------|
@@ -72,7 +79,7 @@ git push → pytest → Docker Build (120MB) → GHCR → SSH Deploy → Health 
 - Grafana Dashboard ID 1860 — Live-Visualisierung
 - Alert-Regeln: App Down, CPU > 80%, RAM > 85%
 
-[Hier Grafana-Dashboard Screenshot einfügen]
+![Grafana Dashboard](docs/Grafana.png)
 
 ---
 
