@@ -34,6 +34,7 @@ variable "ami_id" {
 
 variable "aws_account_id" {
   description = "Deine AWS Account ID (12-stellig)"
+  default     = "386381158423"
 }
 
 variable "ssh_public_key" {
