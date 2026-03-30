@@ -35,6 +35,6 @@ resource "aws_instance" "app" {
     Name        = "${var.project_name}-server"
     Environment = "dev"
     ManagedBy   = "terraform"
-    pipeline_tested = true
+    pipeline_tested = "true"
   }
 }
