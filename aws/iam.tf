@@ -49,9 +49,9 @@ resource "aws_iam_role_policy" "ec2_policy" {
       },
       {
         # CloudWatch Logs: App-Logs schreiben
-        Effect   = "Allow"
-        Action   = ["logs:CreateLogGroup", "logs:CreateLogStream",
-                    "logs:PutLogEvents"]
+        Effect = "Allow"
+        Action = ["logs:CreateLogGroup", "logs:CreateLogStream",
+        "logs:PutLogEvents"]
         Resource = "arn:aws:logs:*:*:*"
       }
     ]

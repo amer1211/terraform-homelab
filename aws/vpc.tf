@@ -1,7 +1,7 @@
 # ── VPC — das private Netzwerk in der Cloud ───────────────
 resource "aws_vpc" "main" {
-  cidr_block           = var.vpc_cidr        # 10.0.0.0/16
-  enable_dns_hostnames = true                # EC2 bekommt DNS-Namen
+  cidr_block           = var.vpc_cidr # 10.0.0.0/16
+  enable_dns_hostnames = true         # EC2 bekommt DNS-Namen
   enable_dns_support   = true
 
   tags = { Name = "${var.project_name}-vpc" }
@@ -16,9 +16,9 @@ resource "aws_internet_gateway" "main" {
 # ── Public Subnet — hier läuft die App ───────────────────
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = var.public_subnet_cidr  # 10.0.1.0/24
+  cidr_block              = var.public_subnet_cidr # 10.0.1.0/24
   availability_zone       = "${var.aws_region}a"
-  map_public_ip_on_launch = true   # EC2 bekommt automatisch public IP
+  map_public_ip_on_launch = true # EC2 bekommt automatisch public IP
 
   tags = { Name = "${var.project_name}-public-subnet" }
 }
@@ -26,7 +26,7 @@ resource "aws_subnet" "public" {
 # ── Private Subnet — für DBs, interne Services ───────────
 resource "aws_subnet" "private" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = var.private_subnet_cidr  # 10.0.2.0/24
+  cidr_block        = var.private_subnet_cidr # 10.0.2.0/24
   availability_zone = "${var.aws_region}b"
 
   tags = { Name = "${var.project_name}-private-subnet" }
@@ -37,8 +37,8 @@ resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"                    # ganzes Internet
-    gateway_id = aws_internet_gateway.main.id   # → via IGW
+    cidr_block = "0.0.0.0/0"                  # ganzes Internet
+    gateway_id = aws_internet_gateway.main.id # → via IGW
   }
 
   tags = { Name = "${var.project_name}-public-rt" }

@@ -24,12 +24,12 @@ variable "private_subnet_cidr" {
 
 variable "my_ip" {
   description = "46.128.131.176/32"
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 
 variable "ami_id" {
-  default     = "ami-0faab6bdbac9486fb"  # Ubuntu 22.04 Frankfurt
+  default = "ami-0faab6bdbac9486fb" # Ubuntu 22.04 Frankfurt
 }
 
 variable "aws_account_id" {

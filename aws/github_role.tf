@@ -4,8 +4,8 @@ resource "aws_iam_role" "github_actions" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect    = "Allow"
-      Action    = "sts:AssumeRoleWithWebIdentity"
+      Effect = "Allow"
+      Action = "sts:AssumeRoleWithWebIdentity"
       Principal = {
         Federated = aws_iam_openid_connect_provider.github.arn
       }
@@ -35,18 +35,18 @@ resource "aws_iam_role_policy" "github_actions" {
         Resource = "*"
       },
       {
-        Effect   = "Allow"
-        Action   = ["s3:GetObject", "s3:PutObject",
-                    "s3:DeleteObject", "s3:ListBucket"]
+        Effect = "Allow"
+        Action = ["s3:GetObject", "s3:PutObject",
+        "s3:DeleteObject", "s3:ListBucket"]
         Resource = [
           aws_s3_bucket.terraform_state.arn,
           "${aws_s3_bucket.terraform_state.arn}/*"
         ]
       },
       {
-        Effect   = "Allow"
-        Action   = ["dynamodb:GetItem", "dynamodb:PutItem",
-                    "dynamodb:DeleteItem"]
+        Effect = "Allow"
+        Action = ["dynamodb:GetItem", "dynamodb:PutItem",
+        "dynamodb:DeleteItem"]
         Resource = aws_dynamodb_table.terraform_lock.arn
       },
       {

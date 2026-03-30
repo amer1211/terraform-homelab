@@ -29,7 +29,7 @@ resource "aws_security_group" "app" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [var.my_ip]   # z.B. "85.123.45.67/32"
+    cidr_blocks = [var.my_ip] # z.B. "85.123.45.67/32"
     description = "SSH only from my IP"
   }
 
@@ -38,7 +38,7 @@ resource "aws_security_group" "app" {
     from_port   = 9090
     to_port     = 9090
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr]   # nur aus dem VPC
+    cidr_blocks = [var.vpc_cidr] # nur aus dem VPC
     description = "Prometheus internal only"
   }
 
@@ -47,7 +47,7 @@ resource "aws_security_group" "app" {
     from_port   = 3000
     to_port     = 3000
     protocol    = "tcp"
-    cidr_blocks = [var.vpc_cidr]   # nur aus dem VPC
+    cidr_blocks = [var.vpc_cidr] # nur aus dem VPC
     description = "Grafana internal only"
   }
 
@@ -55,7 +55,7 @@ resource "aws_security_group" "app" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"             # alles erlaubt
+    protocol    = "-1" # alles erlaubt
     cidr_blocks = ["0.0.0.0/0"]
     description = "All outbound traffic"
   }

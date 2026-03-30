@@ -1,13 +1,13 @@
 # ── SSH Key Pair — dein lokaler Key in AWS registrieren ──
 resource "aws_key_pair" "deployer" {
   key_name   = "${var.project_name}-key"
-  public_key = file("~/.ssh/id_ed25519.pub")  # dein bestehender Key
+  public_key = file("~/.ssh/id_ed25519.pub") # dein bestehender Key
 }
 
 # ── EC2 Instanz ───────────────────────────────────────────
 resource "aws_instance" "app" {
-  ami                    = var.ami_id           # Ubuntu 22.04 Frankfurt
-  instance_type          = var.instance_type   # t2.micro (Free Tier)
+  ami                    = var.ami_id        # Ubuntu 22.04 Frankfurt
+  instance_type          = var.instance_type # t2.micro (Free Tier)
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.app.id]
   key_name               = aws_key_pair.deployer.key_name
@@ -27,14 +27,14 @@ resource "aws_instance" "app" {
   EOF
 
   root_block_device {
-    volume_size = 20          # 20 GB Storage (Free Tier: 30 GB)
+    volume_size = 20 # 20 GB Storage (Free Tier: 30 GB)
     volume_type = "gp3"
   }
 
   tags = {
-    Name        = "${var.project_name}-server"
-    Environment = "dev"
-    ManagedBy   = "terraform"
+    Name            = "${var.project_name}-server"
+    Environment     = "dev"
+    ManagedBy       = "terraform"
     pipeline_tested = "true"
   }
 }
