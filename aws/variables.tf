@@ -41,3 +41,4 @@ variable "ssh_public_key" {
   description = "SSH Public Key für EC2"
   type        = string
 }
+
