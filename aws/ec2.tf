@@ -1,7 +1,7 @@
 # ── SSH Key Pair — dein lokaler Key in AWS registrieren ──
 resource "aws_key_pair" "deployer" {
   key_name   = "${var.project_name}-key"
-  public_key = file("~/.ssh/id_ed25519.pub") # dein bestehender Key
+  public_key = var.ssh_public_key
 }
 
 # ── EC2 Instanz ───────────────────────────────────────────

@@ -95,3 +95,5 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false
         working-directory: ./aws
+        env:
+          TF_VAR_ssh_public_key: ${{ secrets.TF_VAR_SSH_PUBLIC_KEY }}

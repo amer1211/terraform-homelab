@@ -35,3 +35,8 @@ variable "ami_id" {
 variable "aws_account_id" {
   description = "Deine AWS Account ID (12-stellig)"
 }
+
+variable "ssh_public_key" {
+  description = "SSH Public Key für EC2"
+  type        = string
+}
